@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   root to: 'pages#home'
   get 'about', to: 'pages#about'
 
   devise_for :users
 
-  resources :categories do
-    resources :content
-  end
-
+  resources :categories
   resources :testimonials, only: [ :index, :edit, :update ]
   resources :about
+
+  scope '/admin'  do
+    resources :contents
+  end
+
+
 end

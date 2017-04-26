@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @content.info_label %></div>
+</div>
+  <div class="panel-body">
+    <p>Text: <%= @content.info_text %></p>
+
+      <div>
+        <% if @content.video? %>
+         <iframe src="<%= @content.video %>"></iframe>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @content.photo? %>
+           <%= @content.photo %>
+        <% end %>
+      </div>
+
+      <div>
+        Article link: <%= @content.website_link %>
+      </div>
+
+      <div>
+        This content is currently: <% if @content.active ? " visible" : " not listed " %>
+        <% end %>
+      </div>
+
+
+    <%= link_to "All Content", contents_path, class: "btn btn-primary" %>
+    <%= link_to "Edit Content", edit_content_path(@content), class: "btn btn-primary"%>
+    <%= link_to "Delete Content", content_path(@content), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+  </div>
