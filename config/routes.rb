@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :categories
-  resources :about
+
 
   scope '/admin'  do
     resources :contents
     resources :testimonials
+    resources :abouts
   end
 
 

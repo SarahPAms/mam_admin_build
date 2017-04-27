@@ -20,6 +20,9 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     if @content.save
+      image_params do |image|
+        @content.photo.create(photo: photo)
+      end
       redirect_to @content, notice: "Your content has been created"
     else
       render :new

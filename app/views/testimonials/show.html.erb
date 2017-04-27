@@ -1,0 +1,19 @@
+<div class="container testimonial" id="testimonials">
+    <div class="testimonials">
+      <div class="active item">
+        <div class="carousel-info">
+          <%= image_tag @testimonial.photo, class: 'pull-left' %>
+          <div class="pull-left">
+            <span class="testimonials-name"><%= @testimonial.full_name %></span>
+            <span class="testimonials-post"><%= @testimonial.title %></span>
+          </div>
+        </div>
+        <blockquote>
+          <p><%= link_to @testimonial.quote, testimonial_path(@testimonial) %></p>
+        </blockquote>
+      </div>
+    </div>
+  <%= link_to "See all testimonials", testimonials_path, class: "btn btn-primary" %>
+  <%= link_to "Update testimonials", edit_testimonial_path(@testimonial), class: "btn btn-primary" %>
+  <%= link_to "Delete Content", testimonial_path(@testimonial), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+</div>

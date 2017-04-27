@@ -3,4 +3,8 @@ class PagesController < ApplicationController
     @categories = Category.all
     @testimonials = Testimonial.all
   end
+
+  def about
+    @abouts=About.all
+  end
 end
