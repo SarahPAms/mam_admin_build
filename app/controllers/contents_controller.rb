@@ -13,6 +13,10 @@ class ContentsController < ApplicationController
     @content = Content.new
   end
 
+  def edit
+    @content =  Content.find(params[:id])
+  end
+
   def create
     @content = Content.new(content_params)
     if @content.save
@@ -25,13 +29,14 @@ class ContentsController < ApplicationController
   def update
     @content = Content.find(params[:id])
     @content.update(content_params)
-    redirect_to content_path notice: "Your content has been updated"
+    redirect_to contents_path notice: "Your content has been updated"
   end
 
   def destroy
     @content = Content.find(params[:id])
     @content.destroy
-    redirect_to content_path notice: "Your content has been deleted"
+    redirect_to contents_path notice: "Your content has been deleted"
+
   end
 
 
@@ -46,6 +51,6 @@ class ContentsController < ApplicationController
      end
 
      def image_params
-       params[:images].present? ? params.require(:images) : []
+       params[:photo].present? ? params.require(:photo) : []
      end
 end

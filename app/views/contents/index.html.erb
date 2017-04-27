@@ -1,11 +1,11 @@
 <div class="panel panel-primary">
-  <div class="panel-heading"><h2>Content</h2>
-  </div>
-  <div class="panel-body">
-<% @contents.each do |content| %>
-  <p> <%= link_to content.info_label, content_path(content) %> </p>
-<% end %>
-
-<%= link_to "Create New Content", new_content_path, class: "btn btn-primary" %>
-  </div>
+  <div class="panel-heading"><h2>Content</h2></div>
+    <div class="panel-body">
+      <ul>
+        <% @contents.each do |content| %>
+          <li><%= content.info_label %> <%= link_to "See content", content_path(content), class: "btn btn-primary" %> </li>
+        <% end %>
+      </ul>
+        <%= link_to "Create New Content", new_content_path, class: "btn btn-primary" %>
+    </div>
 </div>
