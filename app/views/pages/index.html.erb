@@ -1,0 +1,35 @@
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <% @categories.in_groups_of(3, false) do |category_group| %>
+      <div class="item">
+        <div class="container">
+          <div class="row">
+              <% category_group.each do |category| %>
+                <div class="col-md-4">
+                  <div class="card text-center">
+                    <%= image_tag category.photo, class: "card-img-top img-responsive" %>
+                    <div class="card-block">
+                      <h4 class="card-title"><%= link_to category.name, category_path(category.id) %></h4>
+                      <p class="card-text"><%= category.description %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<script type="text/javascript">
+  $('.carousel').find('.item').first().addClass('active')
+</script>
