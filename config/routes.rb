@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :categories
-  resources :testimonials, only: [ :index, :edit, :update ]
   resources :about
 
   scope '/admin'  do
     resources :contents
+    resources :testimonials
   end
 
 
