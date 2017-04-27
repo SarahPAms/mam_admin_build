@@ -1,5 +1,5 @@
 class About < ApplicationRecord
 
-  default_scope { where(active: true) }
+  # default_scope { where(active: true) }
 
 end
