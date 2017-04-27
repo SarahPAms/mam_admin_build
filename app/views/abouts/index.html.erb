@@ -1,0 +1,22 @@
+<div class="container content" id="abouts">
+  <% @abouts.each do |about| %>
+  <div class="col-md-4">
+    <div class="abouts">
+      <div class="active item">
+        <div class="carousel-info">
+        <% if about.photo? %>
+          <%= image_tag about.photo %>
+        <% end %>
+          <div class="pull-left">
+            <span class="abouts-name"><%= about.name %></span>
+          </div>
+        </div>
+        <blockquote>
+          <p><%= link_to about.motto, about_path(about) %></p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<%= link_to "Create New About", new_about_path, class: "btn btn-primary" %>

@@ -1,4 +1,4 @@
-class AboutController < ApplicationController
+class AboutsController < ApplicationController
 
   def index
     @abouts=About.all
@@ -19,7 +19,7 @@ class AboutController < ApplicationController
   def create
     @about = About.new(about_params)
     if @about.save
-      redirect_to @about, notice: "Your about has been created"
+      redirect_to abouts_path(@about), notice: "Your about has been created"
     else
       render :new
     end
@@ -40,8 +40,7 @@ class AboutController < ApplicationController
 
    private
      def about_params
-       params.require(:about).permit(:id, :quote, :photo, :active, :first_name,
-       :last_name, :title)
+       params.require(:about).permit(:id, :name, :motto, :bio, :photo, :active)
      end
 
      def set_category

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @testimonials = Testimonial.all
   end
 
-  def about
+  def bios
     @abouts=About.all
   end
 end

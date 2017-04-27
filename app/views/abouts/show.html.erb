@@ -1,0 +1,20 @@
+<div class="container about" id="abouts">
+    <div class="abouts">
+        <div class="carousel-info">
+          <% if @about.photo? %>
+            <%= image_tag @about.photo, class: 'pull-left' %>
+          <% end %>
+          <div class="pull-left">
+            <span class="abouts-name"><%= @about.name %></span>
+            <span class="abouts-post"><%= @about.motto %></span>
+          </div>
+        </div>
+        <blockquote>
+          <p><%= @about.bio %></p>
+        </blockquote>
+      </div>
+    </div>
+    <%= link_to "See all abouts", abouts_path, class: "btn btn-primary" %>
+    <%= link_to "Update abouts", edit_about_path(@about), class: "btn btn-primary" %>
+    <%= link_to "Delete Content", about_path(@about), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+  </div>

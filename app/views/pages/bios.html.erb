@@ -5,7 +5,9 @@
     <br>
     <p><%= about.motto %></p>
     <br>
-    <%= image_tag about.photo, size: "300x250" %>
+    <% if about.photo? %>
+      <%= image_tag about.photo, size: "300x250" %>
+    <% end %>
     <br>
     <p><%= about.bio %></p>
     <% end %>
