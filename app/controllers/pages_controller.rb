@@ -8,3 +8,18 @@ class PagesController < ApplicationController
     @abouts=About.all.where(active: true)
   end
 end
+
+
+# from CategoriesController
+# def index
+#   @categories = Category.all
+# end
+#
+# def show
+#   @contents = @category.contents
+#   if params[:search]
+#     @contents = Content.search(params[:search]).order("created_at DESC")
+#   else
+#     @contents = @category.contents.order("created_at DESC").take(5)
+#   end
+# end

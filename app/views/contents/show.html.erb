@@ -21,8 +21,12 @@
       </div>
 
       <div>
-        This content is currently: <% if @content.active ? " visible" : " not listed " %>
-        <% end %>
+        This content is currently:
+          <% if @content.active = true %>
+            <%= "visible" %>
+          <% else %>
+            <%= " not listed " %>
+          <% end %>
       </div>
 
 

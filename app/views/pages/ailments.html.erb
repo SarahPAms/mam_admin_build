@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="col-md-12">
+      <% @iteration = false %>
+      <% @contents.each do |content| %>
+      <div class="media">
+        <% if @iteration == false %>
+        <div class="media-left">
+          <a href="#">
+            <% if content.photo != '' %>
+            <%= image_tag content.photo, height: '100em' %>
+          <% else %>
+            <%= image_tag 'http://pirateghs.files.wordpress.com/2014/03/funny-monkey-1.jpg', height: "100em" %>
+            <% end %>
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= content.info_label %></h4>
+          <p><%= content.info_text %></p>
+          <h5>
+            <a href="#"><%= link_to 'Read more...' ,content.website_link %></a>
+          </h5>
+        </div>
+        <% end %>
+        <% if @iteration == true %>
+        <div class="media-body">
+          <h4 class="media-heading"><%= content.info_label %></h4>
+          <p><%= content.info_text %></p>
+          <h5>
+            <a href="#"><%= link_to 'Read more...' ,content.website_link %></a>
+          </h5>
+        </div>
+        <div class="media-right">
+          <a href="#">
+            <% if content.photo != '' %>
+            <%= image_tag content.photo, height: '100em' %>
+          <% else %>
+            <%= image_tag 'http://pirateghs.files.wordpress.com/2014/03/funny-monkey-1.jpg', height: "100em" %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+
+        <% if @iteration == false %>
+        <% @iteration = true %>
+      <% else %>
+        <% @iteration = false %>
+        <% end %>
+
+        <!-- media -->
+        <% end %>
+      </div>
+      <!-- col -->
+  </div>
+  <!-- container -->

@@ -1,55 +1,27 @@
-<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @category.name %></div>
+</div>
+  <div class="panel-body">
+    <p> Category name: <%= @category.name %> </p>
+    <p> Description: <%= @category.description %></p>
 
-    <div class="col-md-12">
-      <% @iteration = false %>
-      <% @contents.each do |content| %>
-      <div class="media">
-        <% if @iteration == false %>
-        <div class="media-left">
-          <a href="#">
-            <% if content.photo != '' %>
-            <%= image_tag content.photo, height: '100em' %>
-          <% else %>
-            <%= image_tag 'http://pirateghs.files.wordpress.com/2014/03/funny-monkey-1.jpg', height: "100em" %>
-            <% end %>
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading"><%= content.info_label %></h4>
-          <p><%= content.info_text %></p>
-          <h5>
-            <a href="#"><%= link_to 'Read more...' ,content.website_link %></a>
-          </h5>
-        </div>
-        <% end %>
-        <% if @iteration == true %>
-        <div class="media-body">
-          <h4 class="media-heading"><%= content.info_label %></h4>
-          <p><%= content.info_text %></p>
-          <h5>
-            <a href="#"><%= link_to 'Read more...' ,content.website_link %></a>
-          </h5>
-        </div>
-        <div class="media-right">
-          <a href="#">
-            <% if content.photo != '' %>
-            <%= image_tag content.photo, height: '100em' %>
-          <% else %>
-            <%= image_tag 'http://pirateghs.files.wordpress.com/2014/03/funny-monkey-1.jpg', height: "100em" %>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-
-        <% if @iteration == false %>
-        <% @iteration = true %>
-      <% else %>
-        <% @iteration = false %>
-        <% end %>
-
-        <!-- media -->
+      <div>
+        <% if @category.photo? %>
+         <%= @category.photo %>
         <% end %>
       </div>
-      <!-- col -->
+
+      <div>
+        This category is currently:
+          <% if @category.active = true%>
+             <%= "visible" %>
+          <% else %>
+            <%= " not listed " %>
+          <% end %>
+      </div>
+
+
+    <%= link_to "All Categories", categories_path, class: "btn btn-primary" %>
+    <%= link_to "Edit Category", edit_category_path(@category), class: "btn btn-primary"%>
+    <%= link_to "Delete Category", category_path(@category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
   </div>
-  <!-- container -->

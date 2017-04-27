@@ -1,19 +1,41 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
 
   def index
     @categories = Category.all
   end
 
   def show
-    @contents = @category.contents
-    if params[:search]
-      @contents = Content.search(params[:search]).order("created_at DESC")
+    @category = Category.find(params[:id])
+  end
+
+  def new
+    @category = Category.new
+  end
+
+  def edit
+    @category =  Category.find(params[:id])
+  end
+
+  def create
+    @category = Category.new(category_params)
+    if @category.save
+      redirect_to categories_path(@category), notice: "Your category has been created"
     else
-      @contents = @category.contents.order("created_at DESC").take(5)
+      render :new
     end
   end
 
+  def update
+    @category = Category.find(params[:id])
+    @category.update(category_params)
+    redirect_to categories_path notice: "Your category has been updated"
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path notice: "Your category has been deleted"
+  end
 
   private
     def category_params
